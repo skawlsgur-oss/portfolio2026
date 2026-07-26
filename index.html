@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>남진혁 | AI 포트폴리오 & 교육용 리소스 북</title>
+    <meta name="description" content="AI 기반 웹/앱 개발 결과물과 성인 수강생을 위한 프롬프트 및 제작 노하우를 공유하는 개인 포트폴리오입니다.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Design System Base Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient Background Glowing Blobs -->
+    <div class="bg-blur-container" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- 1. Navbar.js Component Mount Target -->
+    <header class="navbar" id="navbar"></header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- 2. Hero.js Component Mount Target -->
+        <section id="about" class="hero-section"></section>
+
+        <!-- 3. ProjectGrid.js Component Mount Target -->
+        <section id="projects" class="projects-section"></section>
+
+        <!-- 4. GuideSection.js Component Mount Target -->
+        <section id="guide" class="guide-section"></section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>© 2026 <strong>남진혁</strong>. All rights reserved. AI와 함께 제작함.</p>
+            <div class="footer-links">
+                <a href="#about">강사 소개</a>
+                <a href="#projects">작업물 갤러리</a>
+                <a href="#" id="footer-admin-btn">관리자 로그인</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 5. Modals.js Component Mount Target -->
+    <div id="modal-container"></div>
+
+    <!-- 6. Toast.js Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- ES Module Main Controller -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
