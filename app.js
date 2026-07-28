@@ -701,13 +701,21 @@
                     if (btnText) btnText.textContent = '메시지 전송 중...';
 
                     try {
+<<<<<<< HEAD
                         // EmailJS 전송 (ServiceID: service_dndsyym, TemplateID: template_qdrhf3u, PublicKey: QUEMDK9pNc9zumycw)
+=======
+                        // EmailJS 전송 (ServiceID: service_dndsyym, TemplateID: template_qdrhf3u)
+>>>>>>> ce8a0fa14b713ff08546507c5ffa76a04e9f73ae
                         if (window.emailjs && typeof window.emailjs.send === 'function') {
                             await window.emailjs.send('service_dndsyym', 'template_qdrhf3u', {
                                 name: name,
                                 email: email,
                                 message: message
+<<<<<<< HEAD
                             }, 'QUEMDK9pNc9zumycw');
+=======
+                            }, 'template_qdrhf3u');
+>>>>>>> ce8a0fa14b713ff08546507c5ffa76a04e9f73ae
                         } else {
                             throw new Error('EmailJS SDK가 로드되지 않았습니다.');
                         }

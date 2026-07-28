@@ -98,7 +98,11 @@
 | **Frontend** | **HTML5 + Vanilla CSS + JavaScript (ES6+ Modules)** | 독립적인 컴포넌트(`components/*.js`) 구조로 가볍고 빠른 반응 속도 확보 |
 | **Database** | **Supabase PostgreSQL Realtime DB** | URL: `https://brvakuminzqaozxmtjtu.supabase.co`<br>• `profiles` & `projects` 테이블 구성<br>• 방문자 화면 및 관리자 화면 동시 실시간 동기화 |
 | **Data Fallback** | **LocalStorage Sync (`portfolio_profile`, `portfolio_projects`)** | Supabase 연결 지연 시 로컬 스토리지 데이터로 자동 폴백(Fallback) |
+<<<<<<< HEAD
 | **Email Service** | **EmailJS Browser SDK v4** | Service ID: `service_dndsyym`, Template ID: `template_qdrhf3u`, Public Key: `QUEMDK9pNc9zumycw`<br>포트폴리오 문의메일 실시간 수신 (`skawlsgur@gmail.com`) |
+=======
+| **Email Service** | **EmailJS Browser SDK v4** | Service ID: `service_dndsyym`, Template ID: `template_qdrhf3u`<br>포트폴리오 문의메일 실시간 수신 (`skawlsgur@gmail.com`) |
+>>>>>>> ce8a0fa14b713ff08546507c5ffa76a04e9f73ae
 | **Routing** | **Page Redirection (`index.html` ↔ `admin.html`)** | 세션 상태에 따른 전용 페이지 이동 |
 | **Styling** | **Glassmorphism CSS & Neon Color System** | `design.md`에 명시된 다크 톤 네온 시스템 적용 |
 
