@@ -11,6 +11,10 @@ import { renderHero } from '../components/Hero.js';
 import { renderProjectCard } from '../components/ProjectCard.js';
 import { renderProjectGrid } from '../components/ProjectGrid.js';
 import { renderGuideSection } from '../components/GuideSection.js';
+import { renderAdminHeader } from '../components/AdminHeader.js';
+import { renderAdminStats } from '../components/AdminStats.js';
+import { renderAdminProfileForm } from '../components/AdminProfileForm.js';
+import { renderAdminProjectsTable } from '../components/AdminProjectsTable.js';
 import { renderModals } from '../components/Modals.js';
 import { showToast } from '../components/Toast.js';
 
@@ -82,6 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (guideContainer) {
         guideContainer.innerHTML = renderGuideSection();
     }
+
+    // 6. Admin Components 마운트
+    const adminHeaderEl = document.getElementById('demo-admin-header-mount');
+    if (adminHeaderEl) adminHeaderEl.innerHTML = renderAdminHeader();
+
+    const adminStatsEl = document.getElementById('demo-admin-stats-mount');
+    if (adminStatsEl) adminStatsEl.innerHTML = renderAdminStats(SAMPLE_PROJECTS);
+
+    const adminProfileEl = document.getElementById('demo-admin-profile-mount');
+    if (adminProfileEl) adminProfileEl.innerHTML = renderAdminProfileForm(SAMPLE_PROFILE);
+
+    const adminProjectsEl = document.getElementById('demo-admin-projects-mount');
+    if (adminProjectsEl) adminProjectsEl.innerHTML = renderAdminProjectsTable(SAMPLE_PROJECTS);
 
     // 6. Modals 마운트
     let modalHolder = document.getElementById('modal-container');

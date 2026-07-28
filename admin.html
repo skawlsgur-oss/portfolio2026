@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>남진혁 AI 포트폴리오 | 전용 관리자 대시보드 (Admin)</title>
+    <meta name="description" content="남진혁 강사의 AI 포트폴리오 전용 관리자 페이지입니다. 자기소개 및 작업물을 수정하고 관리할 수 있습니다.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Supabase JS Client SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Design System Base Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Admin Page Specific Layout Styles -->
+    <style>
+        .admin-header {
+            padding: 1.2rem 0;
+            background: rgba(7, 9, 14, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-container {
+            padding: 3rem 0;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dashboard-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dashboard-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary-cyan);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .admin-section {
+            margin-bottom: 3rem;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .admin-table th {
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--primary-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .admin-table td {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .admin-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Background Blobs -->
+    <div class="bg-blur-container" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- 1. AdminHeader.js Component Mount Target -->
+    <header class="admin-header" id="admin-header"></header>
+
+    <!-- Main Admin Dashboard Container -->
+    <main class="container admin-container">
+
+        <!-- 2. AdminStats.js Component Mount Target -->
+        <div class="dashboard-grid" id="admin-stats"></div>
+
+        <!-- 3. AdminProfileForm.js Component Mount Target -->
+        <section class="admin-section" id="admin-profile-section"></section>
+
+        <!-- 4. AdminProjectsTable.js Component Mount Target -->
+        <section class="admin-section" id="admin-projects-section"></section>
+
+    </main>
+
+    <!-- Modal Mount Container -->
+    <div id="modal-container"></div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Admin Controller Script -->
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

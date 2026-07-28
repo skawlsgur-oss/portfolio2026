@@ -23,10 +23,19 @@ export function renderNavbar(isAdmin = false) {
 
             <!-- 우측 관리자 모드 상태 & 토글 버튼 -->
             <div class="nav-actions">
-                <button id="admin-toggle-btn" class="btn btn-outline admin-btn ${isAdmin ? 'unlocked' : ''}" title="관리자 모드 토글">
-                    <i class="fa-solid ${isAdmin ? 'fa-lock-open' : 'fa-lock'}" id="admin-lock-icon"></i>
-                    <span id="admin-btn-text">${isAdmin ? '관리자 로그아웃' : '관리자 로그인'}</span>
-                </button>
+                ${isAdmin ? `
+                    <a href="admin.html" class="btn btn-primary glow-btn" title="전용 관리자 대시보드로 이동">
+                        <i class="fa-solid fa-user-shield"></i> 관리자 대시보드
+                    </a>
+                    <button id="admin-toggle-btn" class="btn btn-outline admin-btn unlocked" title="관리자 로그아웃">
+                        <i class="fa-solid fa-lock-open"></i> 로그아웃
+                    </button>
+                ` : `
+                    <button id="admin-toggle-btn" class="btn btn-outline admin-btn" title="관리자 로그인">
+                        <i class="fa-solid fa-lock" id="admin-lock-icon"></i>
+                        <span id="admin-btn-text">관리자 로그인</span>
+                    </button>
+                `}
             </div>
         </div>
     `;

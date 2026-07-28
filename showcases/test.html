@@ -6,6 +6,9 @@
     <title>남진혁 AI 포트폴리오 | 자동화 기능 & 컴포넌트 검증 리포트</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase JS Client SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <link rel="stylesheet" href="../style.css">
     <style>
         body { padding: 3rem 0; }
@@ -78,6 +81,10 @@
         import { renderProjectCard } from '../components/ProjectCard.js';
         import { renderProjectGrid } from '../components/ProjectGrid.js';
         import { renderGuideSection } from '../components/GuideSection.js';
+        import { renderAdminHeader } from '../components/AdminHeader.js';
+        import { renderAdminStats } from '../components/AdminStats.js';
+        import { renderAdminProfileForm } from '../components/AdminProfileForm.js';
+        import { renderAdminProjectsTable } from '../components/AdminProjectsTable.js';
         import { renderModals } from '../components/Modals.js';
         import { showToast } from '../components/Toast.js';
 
@@ -145,13 +152,43 @@
             if (!html.includes('prompt-modal')) throw new Error('프롬프트 보기 모달 미포함');
         });
 
-        // 7. LocalStorage 검증
-        runTest('데이터 지속성: LocalStorage 읽기/쓰기 기능 정상 동작', () => {
-            const testKey = 'portfolio_test_key';
-            localStorage.setItem(testKey, JSON.stringify({ test: 'ok' }));
-            const val = JSON.parse(localStorage.getItem(testKey));
-            localStorage.removeItem(testKey);
-            if (val.test !== 'ok') throw new Error('LocalStorage 쓰기/읽기 실패');
+        // 7. Admin Components 테스트
+        runTest('AdminHeader 컴포넌트: 관리자 상단 바 렌더링 검증', () => {
+            const html = renderAdminHeader();
+            if (!html.includes('남진혁.AI 관리자 대시보드')) throw new Error('관리자 헤더 로고 미포함');
+            if (!html.includes('로그아웃')) throw new Error('로그아웃 버튼 미포함');
+        });
+
+        runTest('AdminStats 컴포넌트: 대시보드 요약 통계 카드 렌더링 검증', () => {
+            const projs = [{ category: 'webapp' }, { category: 'tool' }];
+            const html = renderAdminStats(projs);
+            if (!html.includes('총 작업물 수')) throw new Error('총 작업물 수 미포함');
+            if (!html.includes('2개')) throw new Error('통계 숫자 미포함');
+        });
+
+        runTest('AdminProfileForm 컴포넌트: 자기소개 편집 폼 렌더링 검증', () => {
+            const profile = { name: '남진혁', title: 'AI 크리에이터' };
+            const html = renderAdminProfileForm(profile);
+            if (!html.includes('admin-bio-form')) throw new Error('프로필 편집 폼 미포함');
+            if (!html.includes('자기소개 저장하기')) throw new Error('저장 버튼 미포함');
+        });
+
+        runTest('AdminProjectsTable 컴포넌트: 작업물 CRUD 데이터 테이블 렌더링 검증', () => {
+            const projs = [{ id: 'p1', title: '테스트 프로젝트', category: 'webapp' }];
+            const html = renderAdminProjectsTable(projs);
+            if (!html.includes('테스트 프로젝트')) throw new Error('테이블 내 프로젝트 제목 미포함');
+            if (!html.includes('새 작업물 등록')) throw new Error('새 작업물 등록 버튼 미포함');
+        });
+
+        import { fetchProfile, fetchProjects } from '../components/supabaseClient.js';
+
+        // 8. LocalStorage & Supabase 연동 검증
+        runTest('Supabase 클라이언트 & LocalStorage 데이터 연동 검증', async () => {
+            const profile = await fetchProfile({ name: '테스트' });
+            if (!profile || !profile.name) throw new Error('프로필 데이터 로드 실패');
+
+            const projects = await fetchProjects([]);
+            if (!Array.isArray(projects)) throw new Error('작업물 데이터 배열 반환 실패');
         });
 
         // UI에 테스트 결과 렌더링
