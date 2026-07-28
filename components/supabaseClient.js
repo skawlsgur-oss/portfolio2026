@@ -87,12 +87,12 @@ export async function fetchProjects(defaultProjects) {
             if (!error && data && data.length > 0) {
                 const projectsData = data.map(p => ({
                     id: p.id,
-                    title: p.title,
+                    title: p.id === 'proj-1' ? '🎨 AI 그림해석기' : p.title,
                     category: p.category,
-                    desc: p.desc,
-                    icon: p.icon || '🚀',
+                    desc: p.id === 'proj-1' ? '업로드한 그림을 AI가 다각도로 분석하여 그림의 구도, 색감, 심리적 의미와 따뜻한 해석 피드백을 제공해주는 웹 서비스입니다.' : p.desc,
+                    icon: p.id === 'proj-1' ? '🎨' : (p.icon || '🚀'),
                     tools: typeof p.tools === 'string' ? JSON.parse(p.tools) : (p.tools || []),
-                    demoUrl: p.demo_url || '',
+                    demoUrl: p.id === 'proj-1' ? 'https://ai.studio/apps/76713af6-cd79-4e71-a89a-368b6e751a0e?fullscreenApplet=true' : (p.demo_url || ''),
                     githubUrl: p.github_url || '',
                     prompt: p.prompt,
                     tips: p.tips || ''

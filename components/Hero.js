@@ -2,13 +2,12 @@
  * ==========================================================================
  * [컴포넌트] Hero.js - 히어로 & 강사 소개 섹션
  * ==========================================================================
- * 역할: 프로필 타이틀, 자기소개 글, AI 도구 태그 칩 그룹, 관리자 편집 버튼 렌더링
+ * 역할: 프로필 타이틀, 자기소개 글, AI 도구 태그 칩 그룹, 관리자 상태 및 우측 비주얼 렌더링
  */
 
 export function renderHero(profileData, isAdmin = false, projectCount = 0) {
     const { name, title, bio, skills } = profileData;
 
-    // AI 도구 태그 칩 HTML 생성
     const skillsHtml = (skills || []).map(skill => `
         <span class="skill-tag"><i class="fa-solid fa-sparkles"></i> ${escapeHTML(skill)}</span>
     `).join('');
@@ -22,9 +21,11 @@ export function renderHero(profileData, isAdmin = false, projectCount = 0) {
                         <span class="badge glow-badge">
                             <i class="fa-solid fa-sparkles"></i> AI로 만드는 미래 웹 & 앱
                         </span>
-                        <span id="admin-status-tag" class="badge admin-status-badge ${isAdmin ? '' : 'hidden'}">
-                            <i class="fa-solid fa-user-shield"></i> 관리자 편집 모드 중
-                        </span>
+                        ${isAdmin ? `
+                            <span id="admin-status-tag" class="badge admin-status-badge">
+                                <i class="fa-solid fa-user-shield"></i> 관리자 로그인 중
+                            </span>
+                        ` : ''}
                     </div>
                     
                     <h1 class="hero-title">
@@ -35,13 +36,10 @@ export function renderHero(profileData, isAdmin = false, projectCount = 0) {
                         ${escapeHTML(title)}
                     </p>
 
-                    <!-- 자기소개 박스 (관리자 전용 수정 버튼 포함) -->
+                    <!-- 자기소개 박스 -->
                     <div class="bio-box">
                         <div class="bio-header">
                             <h3><i class="fa-solid fa-user-gear"></i> 자기소개</h3>
-                            <button id="edit-bio-btn" class="btn btn-sm btn-ghost admin-only ${isAdmin ? '' : 'hidden'}">
-                                <i class="fa-solid fa-pen-to-square"></i> 수정하기
-                            </button>
                         </div>
                         <p class="bio-text" id="display-bio">${escapeHTML(bio)}</p>
                     </div>
@@ -57,7 +55,7 @@ export function renderHero(profileData, isAdmin = false, projectCount = 0) {
                     <!-- 행동 유도 (CTA) 버튼 -->
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary glow-btn">
-                            <i class="fa-solid fa-cubes"></i> 작업물 둘러보기
+                            <i class="fa-solid fa-cubes"></i> 작업물 둘러보기 (${projectCount}개)
                         </a>
                         <a href="#guide" class="btn btn-secondary">
                             <i class="fa-solid fa-graduation-cap"></i> 수강생 학습 팁
@@ -89,7 +87,6 @@ export function renderHero(profileData, isAdmin = false, projectCount = 0) {
     `;
 }
 
-// XSS 보안 방지를 위한 텍스트 치환 함수
 function escapeHTML(str) {
     if (!str) return '';
     return String(str)

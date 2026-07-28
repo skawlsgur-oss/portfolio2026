@@ -8,29 +8,36 @@
 export function renderGuideSection() {
     return `
         <div class="container">
-            <div class="guide-card glass-panel">
-                <div class="guide-header">
-                    <span class="badge glow-badge"><i class="fa-solid fa-lightbulb"></i> 수강생을 위한 안내</span>
-                    <h2>AI 작업물 포트폴리오 활용법</h2>
-                    <p>수강생 여러분은 이 공간을 통해 다음과 같은 학습 효과를 얻으실 수 있습니다.</p>
+            <div class="section-header">
+                <div>
+                    <span class="section-subtitle">FOR STUDENTS</span>
+                    <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> 수강생을 위한 AI 학습 가이드</h2>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="guide-card glass-panel">
+                    <div class="guide-icon guide-icon-cyan">
+                        <i class="fa-solid fa-copy"></i>
+                    </div>
+                    <h3>1. 프롬프트 복사 & 활용</h3>
+                    <p>각 작업물 카드의 [AI 프롬프트 & 팁] 버튼을 누르면 제가 AI에게 직접 입력했던 시스템 프롬프트 원문을 복사할 수 있습니다.</p>
                 </div>
 
-                <div class="guide-grid">
-                    <div class="guide-item">
-                        <div class="guide-icon"><i class="fa-solid fa-code-compare"></i></div>
-                        <h3>1. 프롬프트 복사 & 실습</h3>
-                        <p>각 작업물의 <strong>[AI 프롬프트 & 노하우]</strong> 버튼을 누르면 완성된 앱을 만들 때 사용한 최적의 프롬프트를 확인하고 원클릭 복사할 수 있습니다.</p>
+                <div class="guide-card glass-panel">
+                    <div class="guide-icon guide-icon-purple">
+                        <i class="fa-solid fa-lightbulb"></i>
                     </div>
-                    <div class="guide-item">
-                        <div class="guide-icon"><i class="fa-solid fa-eye"></i></div>
-                        <h3>2. 라이브 데모 직접 체험</h3>
-                        <p><strong>[라이브 데모]</strong> 버튼으로 완성된 웹앱을 직접 조작해 보며 사용자 경험과 애니메이션 인터랙션을 직접 체험해 보세요.</p>
+                    <h3>2. 제작 노하우 습득</h3>
+                    <p>애니메이션, 상태 관리, 챗봇 대화 기록 저장 등 구현 과정에서 마주친 트러블슈팅과 꿀팁을 함께 제공합니다.</p>
+                </div>
+
+                <div class="guide-card glass-panel">
+                    <div class="guide-icon guide-icon-emerald">
+                        <i class="fa-solid fa-rocket"></i>
                     </div>
-                    <div class="guide-item">
-                        <div class="guide-icon"><i class="fa-solid fa-layer-group"></i></div>
-                        <h3>3. 구현 노하우 학습</h3>
-                        <p>AI 코딩 시 흔히 발생하는 오류 해결법과 디자인 스타일링 팁을 읽으며 본인만의 사이드 프로젝트에 적용할 수 있습니다.</p>
-                    </div>
+                    <h3>3. 실전 아이디어 구현</h3>
+                    <p>강의에서 배운 AI 코딩 기법을 바탕으로 나만의 독창적인 웹사이트와 포트폴리오를 빠르게 구축해 보세요.</p>
                 </div>
             </div>
         </div>
