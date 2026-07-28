@@ -19,6 +19,7 @@ export function renderNavbar(isAdmin = false) {
                 <a href="#about" class="nav-link active">강사 소개</a>
                 <a href="#projects" class="nav-link">AI 작업물</a>
                 <a href="#guide" class="nav-link">수강생 가이드</a>
+                <a href="#contact" class="nav-link">문의하기</a>
             </nav>
 
             <!-- 우측 관리자 모드 상태 & 토글 버튼 -->

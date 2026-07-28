@@ -148,6 +148,14 @@
   * `Midjourney` -> Purple Glass Tag (`rgba(168, 85, 247, 0.2)`)
 * **하단 CTA**: `🚀 바로가기 (Live Demo)` -> Medium Primary Accent Button
 
+### 6.4 연락폼 섹션 (Contact Form Section)
+* **레이아웃**: 2컬럼 레이아웃 (좌: 안내 및 수신 정보 카드 / 우: 문의 메시지 입력 폼)
+* **글래스모피즘 인풋 폼**:
+  * `background: rgba(255, 255, 255, 0.04)`
+  * `border: 1px solid rgba(255, 255, 255, 0.12)`
+  * `Focus State`: `border-color: #00F2FE`, `box-shadow: 0 0 12px rgba(0, 242, 254, 0.25)`
+* **전송 CTA 버튼**: `Large Primary Accent Button` (`linear-gradient(135deg, #00F2FE, #4FACFE)`), Hover 시 Cyan Glow & 3D Lift 효과.
+
 ---
 
 ## 7. 반응형 그리드 & 스페이싱 시스템 (Responsive Grid)
