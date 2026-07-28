@@ -46,7 +46,8 @@
  ├── 2. 히어로 & 자기소개 섹션 (Hero): 강사 정보 및 기술 태그
  ├── 3. 작업물 쇼케이스 (Project Showcase): AI 제작 웹/앱 카드 갤러리
  ├── 4. 수강생 가이드 (Guide Section): 프롬프트 활용 안내
- └── 5. 관리자 인증 로그인 모달 ➔ [로그인 성공 시 admin.html로 이동]
+ ├── 5. 문의 & 연락폼 섹션 (Contact Section): EmailJS 연동 메시지 전송
+ └── 6. 관리자 인증 로그인 모달 ➔ [로그인 성공 시 admin.html로 이동]
 
 [전용 관리자 대시보드 (admin.html)] 🔒
  ├── 1. 상단 바: 대시보드 타이틀 / [포트폴리오 보러가기] / [로그아웃]
@@ -81,6 +82,13 @@
 #### ③ 수강생용 AI 프롬프트 & 팁 공유 모달 (Prompt & Tips Modal)
 * **기능 설명:** 메인 페이지(`index.html`)에서 수강생들이 각 작업물의 `[AI 프롬프트 & 팁]` 버튼을 클릭하면 팝업으로 관리자가 등록한 프롬프트 원문과 팁을 확인하고 **원클릭 복사** 가능.
 
+#### ④ 문의 & 연락폼 섹션 (Contact Section with EmailJS)
+* **기능 설명:** 방문자가 이름, 이메일 주소, 메시지를 입력하고 `[이메일 보내기]` 버튼을 누르면 **EmailJS API**를 통해 지정된 관리자 이메일(`skawlsgur@gmail.com`)로 즉시 발송.
+* **유효성 검사 & 피드백:**
+  * 필수 항목 입력 여부 및 이메일 형식을 클라이언트 사이드에서 즉시 체킹.
+  * 전송 중 버튼 로딩 스피너 애니메이션 표시.
+  * 전송 성공 시 폼 자동 초기화 및 성공 토스트 메세지 출력.
+
 ---
 
 ## 5. 🛠️ 기술 스택 및 데이터 흐름 (Tech Stack & Data Flow)
@@ -90,6 +98,7 @@
 | **Frontend** | **HTML5 + Vanilla CSS + JavaScript (ES6+ Modules)** | 독립적인 컴포넌트(`components/*.js`) 구조로 가볍고 빠른 반응 속도 확보 |
 | **Database** | **Supabase PostgreSQL Realtime DB** | URL: `https://brvakuminzqaozxmtjtu.supabase.co`<br>• `profiles` & `projects` 테이블 구성<br>• 방문자 화면 및 관리자 화면 동시 실시간 동기화 |
 | **Data Fallback** | **LocalStorage Sync (`portfolio_profile`, `portfolio_projects`)** | Supabase 연결 지연 시 로컬 스토리지 데이터로 자동 폴백(Fallback) |
+| **Email Service** | **EmailJS Browser SDK v4** | Service ID: `service_dndsyym`, Template ID: `template_qdrhf3u`, Public Key: `QUEMDK9pNc9zumycw`<br>포트폴리오 문의메일 실시간 수신 (`skawlsgur@gmail.com`) |
 | **Routing** | **Page Redirection (`index.html` ↔ `admin.html`)** | 세션 상태에 따른 전용 페이지 이동 |
 | **Styling** | **Glassmorphism CSS & Neon Color System** | `design.md`에 명시된 다크 톤 네온 시스템 적용 |
 
